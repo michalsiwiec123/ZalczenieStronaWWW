@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Procesor 1 - Sklep z Częściami Komputerowymi</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+			font-size: 20px;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+        }
+		h2 {
+			font-size: 2em;
+		}
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #444;
+            padding: 10px 0;
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 15px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .product-title {
+            text-align: center;
+        }
+        .product-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        .product-image, .product-details {
+            flex: 1 1 45%;
+            margin: 10px;
+        }
+        .product-image img {
+            width: 100%;
+            height: auto;
+        }
+        .product-details h2 {
+            color: #333;
+        }
+        .product-specs, .product-description, .product-video {
+            margin-top: 20px;
+        }
+        .product-video iframe {
+            width: 100%;
+            height: 315px;
+        }
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+            position: absolute;
+            width: 100%;
+            bottom: 0;
+        }
+		footer {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            height: 60px; /* Ustalamy wysokość stopki */
+            font-size: 18px; /* Powiększenie tekstu w stopce */
+        }
+		select[name="procesoryy"] {
+            font-size: 40px; /* Wielkość czcionki */
+            float: right; /* Pozycja po prawej stronie */
+            margin-top: 10px; /* Margines na górze */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Sklep z Częściami Komputerowymi</h1>
+    </header>
+    <nav>
+        <a href="nowy5.html">Strona główna</a>
+        <a href="procesory.html">Procesory</a>
+        <a href="kontakt.html">Kontakt</a>
+    </nav>
+    <div class="container">
+        <div class="product-title">
+            <h2>Procesor 1</h2>
+			<select name="prcesoryy">
+<option value="procesor2">procesor2</option>
+<option value="procesor3">procesor3</option>
+<option value="procesor4">procesor4</option>
+<option value="procesor5">procesor5</option>
+</select>
+        </div>
+        <div class="product-content">
+            <div class="product-image">
+                <img src="processor1.png" alt="Procesor 1">
+            </div>
+            <div class="product-details">
+                <ul class="product-specs">
+                   <table border="1">
+    <caption>Specyfikacje techniczne procesora</caption>
+    <tr>
+        <th>Parametr</th>
+        <th>Wartość</th>
+    </tr>
+    <tr>
+        <td>Model</td>
+        <td>Procesor 1</td>
+    </tr>
+    <tr>
+        <td>Taktowanie</td>
+        <td>3.6 GHz</td>
+    </tr>
+    <tr>
+        <td>Liczba rdzeni</td>
+        <td>6</td>
+    </tr>
+    <tr>
+        <td>Socket</td>
+        <td>AM4</td>
+    </tr>
+    <tr>
+        <td>Pamięć Cache</td>
+        <td>16 MB</td>
+    </tr>
+    <tr>
+        <td>TDP</td>
+        <td>65W</td>
+    </tr>
+</table>
+
+                </ul>
+                <h2>Opis produktu</h2>
+                <p class="product-description">
+                    Procesor 1 to nowoczesny procesor przeznaczony dla entuzjastów komputerowych i graczy. Dzięki wysokiemu taktowaniu i wielordzeniowej architekturze zapewnia wyjątkową wydajność zarówno w aplikacjach jednowątkowych, jak i wielowątkowych.
+                </p>
+				<h2>Wady i zalety</h2>
+<ul class="product-pros-cons">
+    <li>
+        <strong>Zalety:</strong>
+        <ul>
+            <li>Wysokie taktowanie</li>
+            <li>Duża pamięć Cache</li>
+            <li>Niskie zużycie energii (TDP: 65W)</li>
+        </ul>
+    </li>
+    <li>
+        <strong>Wady:</strong>
+        <ul>
+            <li>Brak wbudowanego układu graficznego</li>
+            <li>Może być droższy od innych procesorów o podobnych parametrach</li>
+        </ul>
+    </li>
+</ul>
+                <h2>Instrukcja montażu</h2>
+                <div class="product-video">
+
+                    <iframe src="filmik5.mp4" frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2023 Sklep z Częściami Komputerowymi. Wszelkie prawa zastrzeżone.</p>
+    </footer>
+</body>
+</html>

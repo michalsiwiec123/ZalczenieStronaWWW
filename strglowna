@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sklep z Częściami Komputerowymi</title>
+	 <style>
+        /* Stylizacja kontenera */
+        .video-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* Wysokość pełnego widoku */
+        }
+
+        /* Stylizacja dla filmiku */
+        .video-container iframe {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            margin-bottom: 60px; /* Dodajemy margines na dole, aby uniknąć zasłaniania stopki */
+            font-size: 20px; /* Powiększenie tekstu */
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            font-size: 24px; /* Powiększenie tekstu w nagłówku */
+        }
+        nav {
+            background-color: #444;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+            font-size: 20px; /* Powiększenie tekstu w nawigacji */
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+			font-size: 26px;
+        }
+        nav ul li {
+            display: inline;
+            margin: 0 10px;
+        }
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
+        section {
+            padding: 20px;
+        }
+		h4 {
+			font-size: 1.25em;
+		}
+		h5 {
+			font-size: 3em;
+			text-align: center;	
+		}
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            height: 60px; /* Ustalamy wysokość stopki */
+            font-size: 18px; /* Powiększenie tekstu w stopce */
+        }
+        .product {
+            border: 1px solid #ccc;
+            padding: 20px; /* Zwiększenie paddingu */
+            margin-bottom: 20px;
+            background-color: #fff;
+            width: 350px; /* Szerokość kwadratu */
+            height: 350px; /* Wysokość kwadratu */
+            display: inline-block; /* Pozwala na wyświetlanie produktów obok siebie */
+            vertical-align: top; /* Produkt będzie wyświetlany na górze kwadratu */
+            font-size: 18px; /* Powiększenie tekstu w produktach */
+        }
+        .product img {
+            max-width: 100%;
+            height: auto;
+            max-height: 200px; /* Zwiększenie wielkości obrazka */
+            display: block; /* Usuwa białe przestrzenie pod obrazkiem */
+            margin: 0 auto 10px; /* Wyśrodkowanie obrazka */
+        }
+        @media screen and (max-width: 600px) {
+            nav ul li {
+                display: block;
+                margin: 10px 0;
+            }
+        }
+        .product button {
+            background-color: #4CAF50; /* Green */
+            border: none;
+            color: white;
+            padding: 15px 30px; /* Zwiększenie paddingu */
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 18px; /* Powiększenie tekstu na przyciskach */
+            margin: 6px 3px; /* Zwiększenie marginesu */
+            cursor: pointer;
+            transition-duration: 0.4s;
+        }
+        .product button:hover {
+            background-color: #45a049;
+        }
+        
+        /* Style dla wysokiego kontrastu */
+       body.high-contrast {
+            background-color: #000;
+            color: yellow;
+        }
+        body.high-contrast header {
+            background-color: #000;
+            color: yellow;
+        }
+        body.high-contrast nav {
+            background-color: #000;
+        }
+        body.high-contrast nav ul li a {
+            color: yellow;
+        }
+        body.high-contrast footer {
+            background-color: #000;
+            color: yellow;
+        }
+        body.high-contrast .product {
+            background-color: #000;
+            color: yellow;
+            border-color: yellow;
+        }
+        body.high-contrast .product button {
+            background-color: yellow;
+            color: #000;
+        }
+        body.high-contrast .product button:hover {
+            background-color: #fff;
+            color: #000;
+        }
+		#cart-info a {
+            color: red;
+        }
+		body.high-contrast section#contact {
+    background-color: #000;
+    color: yellow;
+}
+body.high-contrast section#contact label {
+    color: yellow;
+}
+body.high-contrast section#contact input[type="text"],
+body.high-contrast section#contact input[type="email"],
+body.high-contrast section#contact textarea {
+    background-color: #333;
+    color: #fff;
+    border: 1px solid #ccc;
+}
+body.high-contrast section#contact input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+}
+		.progress-bar-container {
+    width: 100%;
+    background-color: #f3f3f3;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+.progress-bar {
+    width: 0;
+    height: 30px;
+    background-color: #4caf50;
+    text-align: center;
+    color: white;
+    border-radius: 5px;
+}
+ :focus {
+            outline: 2px solid #007bff; /* Kolor outline */
+            outline-offset: 3px; /* Odległość outline od elementu */
+        }
+		#store-logo {
+    float: right; /* Ustawienie logo na prawo */
+    margin-top: 10px; /* Dodatkowy margines na górze */
+    margin-right: 20px; /* Dodatkowy margines na prawo */
+    width: 100px; /* Dostosuj szerokość logo do preferencji */
+    height: auto; /* Zachowanie proporcji */
+}
+    </style>
+	<style>
+    section#contact {
+        padding: 20px;
+        background-color: #f9f9f9;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        max-width: 1500px;
+		max-height: 700px;
+        margin: 40px auto;
+    }
+    section#contact h2 {
+        text-align: center;
+        font-size: 30px;
+        margin-bottom: 20px;
+    }
+    section#contact form {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+	section#contact form input[type="name"],
+    section#contact form input[type="text"],
+    section#contact form input[type="email"],
+    section#contact form textarea {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 40px;
+    }
+    section#contact form input[type="submit"] {
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        padding: 15px;
+        font-size: 16px;
+        cursor: pointer;
+        border-radius: 5px;
+        transition: background-color 0.3s;
+    }
+    section#contact form input[type="submit"]:hover {
+        background-color: #45a049;
+    }
+</style>
+
+</head>
+<body>
+    <header>
+        <h1>Sklep z Częściami Komputerowymi</h1>
+        <div id="cart-info">
+            Koszyk (<span id="cart-count">0</span>)
+            <a href="#cart">Przejdź do koszyka</a>
+        </div>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="#home">Strona główna</a></li>
+            <li><a href="#processors">Procesory</a></li>
+            <li><a href="#graphics-cards">Karty graficzne</a></li>
+            <li><a href="#ram">Pamięci RAM</a></li>
+            <li><a href="#hard-drives">Dyski twarde</a></li>
+            <li><a href="#accessories">Akcesoria</a></li>
+            <li><a href="#contact">Kontakt</a></li>
+        </ul>
+    </nav>
+    <section id="home">
+     <h2>Witaj w naszym sklepie z częściami komputerowymi!</h2>
+       <h4><p>Znajdziesz u nas szeroki wybór najnowszych podzespołów do swojego komputera. Posiadamy produkty najwyższej jakości w atrakcyjnych cenach.</p></h4>
+       <h4> <p>Zapraszamy do zapoznania się z naszą ofertą!</p></h4>
+    </section>
+
+    <section id="processors" aria-labelledby="processors-heading">
+        <h2>Procesory</h2>
+        <div class="product" role="article" aria-labelledby="product1-name" aria-describedby="product1-description">
+            <a href="processor1.html"><img src="processor1.png" alt="Procesor 1"></a>
+            <h3>Procesor 1</h3>
+            <p>Cena: 500 PLN</p>
+            <button onclick="addToCart('processor1')">Dodaj do koszyka</button>
+			<input type="checkbox" id="newsletter" name="newsletter" value="yes" tabindex="4" class="focus-outline"><br><br>
+        </div>
+        <div class="product">
+             <a href="https://www.x-kom.pl/g-5/c/11-procesory.html"><img src="processor1.png" alt="Procesor 1"></a>
+            <h3>Procesor 2</h3>
+            <p>Cena: 700 PLN</p>
+            <button onclick="addToCart('processor2')">Dodaj do koszyka</button>
+        </div>
+        <!-- Tutaj dodaj kolejne procesory -->
+        <div class="product">
+            <img src="processor1.png" label="Procesor 3">
+            <h3>Procesor 3</h3>
+            <p>Cena: 800 PLN</p>
+            <button onclick="addToCart('processor3')">Dodaj do koszyka</button>
+        </div>
+        <div class="product">
+            <img src="processor1.png" aria-label="Procesor 4">
+            <h3>Procesor 4</h3>
+            <p>Cena: 900 PLN</p>
+            <button onclick="addToCart('processor4')">Dodaj do koszyka</button>
+        </div>
+		<div class="product">
+            <img src="processor1.png" longdesc="Procesor 4">
+            <h3>Procesor 4</h3>
+            <p>Cena: 900 PLN</p>
+            <button onclick="addToCart('processor4')">Dodaj do koszyka</button>
+        </div>
+		<div class="product">
+            <img src="processor1.png" alt="Procesor 4">
+            <h3>Procesor 4</h3>
+            <p>Cena: 900 PLN</p>
+            <button onclick="addToCart('processor4')">Dodaj do koszyka</button>
+        </div>
+		
+    </section>
+
+    <section id="graphics-cards">
+        <h2>Karty graficzne</h2>
+        <div class="product">
+            <img src="graphics_card1.jpg" alt="Karta graficzna 1">
+            <h3>Karta graficzna 1</h3>
+            <p>Cena: 1000 PLN</p>
+            <button onclick="addToCart('graphics_card1')">Dodaj do koszyka</button>
+        </div>
+        <div class="product">
+            <img src="graphics_card1.jpg" alt="Karta graficzna 2">
+            <h3>Karta graficzna 2</h3>
+            <p>Cena: 1200 PLN</p>
+            <button onclick="addToCart('graphics_card2')">Dodaj do koszyka</button>
+        </div>
+        <!-- Tutaj dodaj kolejne karty graficzne -->
+        <div class="product">
+            <img src="graphics_card1.jpg" alt="Karta graficzna 3">
+            <h3>Karta graficzna 3</h3>
+            <p>Cena: 1400 PLN</p>
+            <button onclick="addToCart('graphics_card3')">Dodaj do koszyka</button>
+        </div>
+        <div class="product">
+            <img src="graphics_card1.jpg" alt="Karta graficzna 4">
+            <h3>Karta graficzna 4</h3>
+            <p>Cena: 1600 PLN</p>
+            <button onclick="addToCart('graphics_card4')">Dodaj do koszyka</button>
+        </div>
+		 <div class="product">
+            <img src="graphics_card1.jpg" alt="Karta graficzna 4">
+            <h3>Karta graficzna 4</h3>
+            <p>Cena: 1600 PLN</p>
+            <button onclick="addToCart('graphics_card4')">Dodaj do koszyka</button>
+        </div>
+		 <div class="product">
+            <img src="graphics_card1.jpg" alt="Karta graficzna 4">
+            <h3>Karta graficzna 4</h3>
+            <p>Cena: 1600 PLN</p>
+            <button onclick="addToCart('graphics_card4')">Dodaj do koszyka</button>
+        </div>
+	    </section>
+
+    <section id="ram">
+        <h2>Pamięci RAM</h2>
+        <div class="product">
+            <img src="ram1.jpg" alt="Pamięć RAM 1">
+            <h3>Pamięć RAM 1</h3>
+            <p>Cena: 200 PLN</p>
+            <button onclick="addToCart('ram1')">Dodaj do koszyka</button>
+        </div>
+        <div class="product">
+            <img src="ram1.jpg" alt="Pamięć RAM 2">
+            <h3>Pamięć RAM 2</h3>
+            <p>Cena: 300 PLN</p>
+            <button onclick="addToCart('ram2')">Dodaj do koszyka</button>
+        </div>
+        <!-- Tutaj dodaj kolejne pamięci RAM -->
+        <div class="product">
+            <img src="ram1.jpg" alt="Pamięć RAM 3">
+            <h3>Pamięć RAM 3</h3>
+            <p>Cena: 400 PLN</p>
+            <button onclick="addToCart('ram3')">Dodaj do koszyka</button>
+        </div>
+        <div class="product">
+            <img src="ram1.jpg" alt="Pamięć RAM 4">
+            <h3>Pamięć RAM 4</h3>
+            <p>Cena: 500 PLN</p>
+            <button onclick="addToCart('ram4')">Dodaj do koszyka</button>
+        </div>
+		<div class="product">
+            <img src="ram1.jpg" alt="Pamięć RAM 4">
+            <h3>Pamięć RAM 4</h3>
+            <p>Cena: 500 PLN</p>
+            <button onclick="addToCart('ram4')">Dodaj do koszyka</button>
+        </div>
+		<div class="product">
+            <img src="ram1.jpg" alt="Pamięć RAM 4">
+            <h3>Pamięć RAM 4</h3>
+            <p>Cena: 500 PLN</p>
+            <button onclick="addToCart('ram4')">Dodaj do koszyka</button>
+        </div>
+		
+    </section>
+
+    <section id="hard-drives">
+        <h2>Dyski twarde</h2>
+        <div class="product">
+            <img src="hard_drive1.jpg" alt="Dysk twardy 1">
+            <h3>Dysk twardy 1</h3>
+            <p>Cena: 400 PLN</p>
+            <button onclick="addToCart('hard_drive1')">Dodaj do koszyka</button>
+        </div>
+        <div class="product">
+            <img src="hard_drive1.jpg" alt="Dysk twardy 2">
+            <h3>Dysk twardy 2</h3>
+            <p>Cena: 600 PLN</p>
+            <button onclick="addToCart('hard_drive2')">Dodaj do koszyka</button>
+        </div>
+        <!-- Tutaj dodaj kolejne dyski twarde -->
+        <div class="product">
+            <img src="hard_drive1.jpg" alt="Dysk twardy 3">
+            <h3>Dysk twardy 3</h3>
+            <p>Cena: 700 PLN</p>
+            <button onclick="addToCart('hard_drive3')">Dodaj do koszyka</button>
+        </div>
+        <div class="product">
+            <img src="hard_drive1.jpg" alt="Dysk twardy 4">
+            <h3>Dysk twardy 4</h3>
+            <p>Cena: 800 PLN</p>
+            <button onclick="addToCart('hard_drive4')">Dodaj do koszyka</button>
+        </div>
+		 <div class="product">
+            <img src="hard_drive1.jpg" alt="Dysk twardy 1">
+            <h3>Dysk twardy 1</h3>
+            <p>Cena: 400 PLN</p>
+            <button onclick="addToCart('hard_drive1')">Dodaj do koszyka</button>
+        </div>
+		 <div class="product">
+            <img src="hard_drive1.jpg" alt="Dysk twardy 1">
+            <h3>Dysk twardy 1</h3>
+            <p>Cena: 400 PLN</p>
+            <button onclick="addToCart('hard_drive1')">Dodaj do koszyka</button>
+        </div>
+		
+    </section>
+
+    <section id="accessories">
+        <h2>Akcesoria</h2>
+        <div class="product">
+            <img src="accessory1.jpg" alt="Akcesorium 1">
+            <h3>Akcesorium 1</h3>
+            <p>Cena: 50 PLN</p>
+            <button onclick="addToCart('accessory1')">Dodaj do koszyka</button>
+        </div>
+        <div class="product">
+            <img src="accessory1.jpg" alt="Akcesorium 2">
+            <h3>Akcesorium 2</h3>
+            <p>Cena: 70 PLN</p>
+            <button onclick="addToCart('accessory2')">Dodaj do koszyka</button>
+        </div>
+        <!-- Tutaj dodaj kolejne akcesoria -->
+        <div class="product">
+            <img src="accessory1.jpg" alt="Akcesorium 3">
+            <h3>Akcesorium 3</h3>
+            <p>Cena: 80 PLN</p>
+            <button onclick="addToCart('accessory3')">Dodaj do koszyka</button>
+        </div>
+        <div class="product">
+            <img src="accessory1.jpg" alt="Akcesorium 4">
+            <h3>Akcesorium 4</h3>
+            <p>Cena: 90 PLN</p>
+            <button onclick="addToCart('accessory4')">Dodaj do koszyka</button>
+        </div>
+		 <div class="product">
+            <img src="accessory1.jpg" alt="Akcesorium 4">
+            <h3>Akcesorium 4</h3>
+            <p>Cena: 90 PLN</p>
+            <button onclick="addToCart('accessory4')">Dodaj do koszyka</button>
+        </div>
+		 <div class="product">
+            <img src="accessory1.jpg" alt="Akcesorium 4">
+            <h3>Akcesorium 4</h3>
+            <p>Cena: 90 PLN</p>
+            <button onclick="addToCart('accessory4')">Dodaj do koszyka</button>
+        </div>
+    </section>
+	<h5>Filmy instruktażowe</h5>
+	<section class="video-container">
+    
+     <video width="1980" height="1080" controls aria-label="Film instruktażowy">
+  <source src="filmik5.mp4" type="video/mp4">
+  <track src="napisy.vtt" kind="subtitles" srclang="pl" label="Polskie napisy">
+</section>
+
+<section id="contact">
+    <h2>Kontakt</h2>
+    <form action="#" method="post">
+        <label for="name">Imię i nazwisko:</label>
+        <input type="text" id="name" name="name" required pattern="[a-zA-Z]*" placeholder="Imię i nazwisko" tabindex="1"
+               aria-describedby="name-error"><br>
+        <span id="name-error" class="error" style="display: none;">Proszę wprowadzić poprawne imię i nazwisko (tylko litery).</span>
+        
+        <label for="email">Adres email:</label>
+        <input type="email" id="email" name="email" required pattern="[^@]+@[^@]+.[a-zA-Z]{2,6}" placeholder="Adres email" tabindex="2"
+               aria-describedby="email-error"><br>
+        <span id="email-error" class="error" style="display: none;">Proszę wprowadzić poprawny adres email.</span>
+        
+        <label for="message">Treść wiadomości:</label>
+        <textarea id="message" name="message" placeholder="Treść wiadomości" rows="2" required tabindex="3"
+                  aria-describedby="message-error"></textarea><br>
+        <span id="message-error" class="error" style="display: none;">Proszę wprowadzić treść wiadomości.</span>
+        
+        <input type="submit" value="Wyślij" tabindex="4">
+		
+        <div class="progress-bar-container" style="display: none;">
+            <div class="progress-bar" id="progress-bar" style="width: 0%;">Wysyłanie...</div>
+        </div>
+    </form>
+</section>
+
+
+
+        </form>
+    </section>
+
+    <!-- Przycisk do zmiany kolorów strony na wysoki kontrast -->
+    <button id="contrast-toggle" style="position: fixed; font-size: 2em; top: 20px; right: 20px; z-index: 999;">Wysoki kontrast</button>
+ <button id="increase-font-size" style="position: fixed; font-size: 2em; top: 80px; right: 20px; z-index: 999;">+</button>
+  <button id="decrease-font-size" style="position: fixed; font-size: 2em; top: 80px; right: 60px; z-index: 999;">-</button>
+
+    <footer aria-label="Stopka">
+        <p>&copy; 2024 Sklep z Częściami Komputerowymi. Wszelkie prawa zastrzeżone.</p>
+    </footer>
+
+    <script>
+        // Obiekt koszyka, przechowujący produkty i ich ilości
+        var cart = {};
+
+        // Funkcja dodawania produktu do koszyka
+        function addToCart(productId) {
+            if (cart[productId]) {
+                cart[productId]++;
+            } else {
+                cart[productId] = 1;
+            }
+            updateCartCount();
+        }
+
+        // Funkcja aktualizująca liczbę produktów w koszyku w nagłówku
+        function updateCartCount() {
+            var totalCount = Object.values(cart).reduce((total, count) => total + count, 0);
+            document.getElementById('cart-count').textContent = totalCount;
+        }
+
+        // Dodajemy obsługę przycisku do zmiany kolorów na wysoki kontrast
+        document.getElementById('contrast-toggle').addEventListener('click', function() {
+            // Dodajemy lub usuwamy klasę 'high-contrast' na elemencie body w zależności od aktualnego stanu
+            document.body.classList.toggle('high-contrast');
+        });
+		function toggleHighContrast() {
+            document.body.classList.toggle('high-contrast');
+        }
+		 function increaseFontSize() {
+        // Pobieramy aktualny rozmiar czcionki
+        var currentFontSize = parseFloat(window.getComputedStyle(document.body).fontSize);
+        // Zwiększamy rozmiar czcionki o 2 piksele
+        var newFontSize = currentFontSize + 2;
+        // Ustawiamy nowy rozmiar czcionki na stronie
+        document.body.style.fontSize = newFontSize + 'px';
+    }
+	 // Funkcja zmniejszająca rozmiar czcionki na stronie
+        function decreaseFontSize() {
+            // Pobieramy aktualny rozmiar czcionki
+            var currentFontSize = parseFloat(window.getComputedStyle(document.body).fontSize);
+            // Zmniejszamy rozmiar czcionki o 2 piksele
+            var newFontSize = currentFontSize - 2;
+            // Ustawiamy nowy rozmiar czcionki na stronie
+            document.body.style.fontSize = newFontSize + 'px';
+        }
+
+    // Dodajemy obsługę kliknięcia na przycisk "Powiększ czcionkę"
+    document.getElementById('increase-font-size').addEventListener('click', function() {
+        increaseFontSize();
+    });
+	 // Dodajemy obsługę kliknięcia na przycisk "Zmniejsz czcionkę"
+        document.getElementById('decrease-font-size').addEventListener('click', function() {
+            decreaseFontSize();
+        });
+    </script>
+	<script>
+    // Funkcja obsługująca wysyłanie formularza
+    document.querySelector('form').addEventListener('submit', function(event) {
+        // Zatrzymujemy domyślną akcję wysyłania formularza
+        event.preventDefault();
+        
+        // Pobieramy referencję do progresu
+        var progressBar = document.getElementById('progress-bar');
+        // Ustawiamy szerokość na 0 na początku
+        progressBar.style.width = '0%';
+        
+        // Pokazujemy pasek postępu
+        document.querySelector('.progress-bar-container').style.display = 'block';
+        
+        // Symulacja wysyłania formularza
+        var progress = 0;
+        var interval = setInterval(function() {
+            progress += 10;
+            progressBar.style.width = progress + '%';
+            if (progress >= 100) {
+                clearInterval(interval);
+                // Ukrywamy pasek postępu po zakończeniu symulacji
+                document.querySelector('.progress-bar-container').style.display = 'none';
+                // Tutaj możesz dodać dodatkowe akcje po wysłaniu formularza, np. wyświetlenie potwierdzenia
+                alert('Formularz został wysłany!');
+            }
+        }, 500);
+    });
+</script>
+
+</body>
+</html>
